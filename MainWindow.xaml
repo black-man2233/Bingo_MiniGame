@@ -5,24 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Bingo_Game"
         mc:Ignorable="d"
-        Title="Bingo" 
-        ResizeMode="NoResize"
-        Height="450" Width="800">
+        Height="450" 
+        Width="800"
+        >
     <Grid Background= "#eb3b5a">
-        
-        <ListBox Name="Brugte_list" 
+
+        <ListBox Name="Brugte_listBox" 
                  FontSize="22"
                  Background="#fc5c65"
                  d:ItemsSource="{d:SampleData ItemCount=5}" 
                  Margin="31,102,557,27"/>
 
-        <ListBox Name="Tryk_knappen" 
+        <ListBox Name="Ubrugte_ListBox" 
                  FontSize="22" 
                  d:ItemsSource="{d:SampleData ItemCount=5}" 
                  Background="#fc5c65"
                  Margin="559,102,29,27"/>
-        
-        
+
         <Label Name="TrukkerTal"
                Margin="22"
                Background="#fd9644"
@@ -36,17 +35,14 @@
                TextElement.FontStyle="Normal"
                HorizontalContentAlignment="Center"/>
 
-        
-        <Button Name="UBrugte_list"
+        <Button Name="Tryk_knap"
                 Content="Tryk" 
                 Background="#45aaf2"
                 FontSize="33" 
                 HorizontalAlignment="Center" 
                 VerticalAlignment="Center" 
                 Width="150" 
-                Height="150"/>
-
+                Height="150"
+                Click="Tryk_knap_Click"/>
     </Grid>
-
-    
 </Window>
