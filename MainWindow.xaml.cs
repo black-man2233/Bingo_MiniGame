@@ -13,18 +13,20 @@ namespace Bingo_Game
     public partial class MainWindow : Window
     {
         Random talRandomizer = new Random();
-        int trukketTal;
+        int trukketTal = 0;
+        List<int> trukketList = new List<int>();
+
+
 
         public MainWindow()
         {
             InitializeComponent();
+            GameStart(90);
 
-            for (int i = 1; i < 10 + (1); i++)
-            {
-                Ubrugte_ListBox.Items.Add(i);
-            }
+            Trukket_Label.Content = "Trukket tal Vises her";
 
-
+            Brugte_listBox.Items.Reverse();
+           
         }
 
         private void Tryk_knap_Click(object sender, RoutedEventArgs e)
@@ -32,20 +34,45 @@ namespace Bingo_Game
 
             if (!Ubrugte_ListBox.Items.IsEmpty)
             {
-                trukketTal = talRandomizer.Next(1, Ubrugte_ListBox.Items.Count);
+                trukketTal = talRandomizer.Next(0, Ubrugte_ListBox.Items.Count - 1);
 
-                if (!Brugte_listBox.Items.Contains(trukketTal))
+
+                Trukket_Label.Content = $"{Ubrugte_ListBox.Items[trukketTal]}";
+
+
+                Brugte_listBox.Items.Add(Ubrugte_ListBox.Items[trukketTal]);
+
+                Ubrugte_ListBox.Items.Remove(Ubrugte_ListBox.Items[trukketTal]);
+
+            }
+            else if (Ubrugte_ListBox.Items.IsEmpty)
+            {
+               var resultat =  MessageBox.Show("Vil du starte Forfra?", "Genstart?", MessageBoxButton.YesNo);
+                if (resultat == MessageBoxResult.Yes)
                 {
-                    Brugte_listBox.Items.Add(trukketTal);
-                    Ubrugte_ListBox.Items.Remove(trukketTal);
-
-                    Trukket_Label.Content = trukketTal;
+                    GameStart(90);
                 }
-                Debug.WriteLine(trukketTal);
-
+                else
+                {
+                    this.Close();
+                }
             }
 
 
+
+        }
+
+        void GameStart(int antal)
+        {
+            Trukket_Label.Content = String.Empty;
+            Trukket_Label.Content = "Trukket tal Vises her";
+            Brugte_listBox.Items.Clear();
+            Ubrugte_ListBox.Items.Clear();
+
+            for (int i = 1; i < antal + (1); i++)
+            {
+                Ubrugte_ListBox.Items.Add(i);
+            }
 
         }
     }

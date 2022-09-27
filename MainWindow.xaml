@@ -17,7 +17,8 @@
                  FontSize="22"
                  Background="#fc5c65"
                  d:ItemsSource="{d:SampleData ItemCount=5}" 
-                 Margin="31,102,557,27"/>
+                 Margin="31,102,557,27"
+                 />
 
         <ListBox Name="Ubrugte_ListBox" 
                  FontSize="22" 
